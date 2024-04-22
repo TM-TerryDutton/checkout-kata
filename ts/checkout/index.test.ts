@@ -1,9 +1,9 @@
-import { Checkout, Products, SpecialOffer, SpecialOffers } from ".";
+import { Checkout, SpecialOffer, type ProductPrices, type SpecialOffers } from ".";
 
 describe('Checkout', () => {
   const testCases: {
     description: string;
-    products: Products;
+    products: ProductPrices;
     toScan: string,
     specialOffers?: SpecialOffers;
     expectedTotal: number;

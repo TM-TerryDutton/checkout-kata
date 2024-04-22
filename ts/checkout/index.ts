@@ -1,4 +1,5 @@
-export type Products = { [sku: string]: number };
+export type ProductPrices = { [sku: string]: number };
+type ScannedProducts = { [sku: string]: number };
 export type SpecialOffers = { [sku: string]: SpecialOffer };
 type SpecialOfferResult = { totalPrice: number, remaining: number };
 
@@ -11,15 +12,15 @@ export class SpecialOffer {
   public apply(quantity: number): SpecialOfferResult {
     const totalPrice = Math.floor(quantity / this.qualifyingQuantity) * this.price;
     const remaining = quantity % this.qualifyingQuantity;
-    return { totalPrice, remaining  };
+    return { totalPrice, remaining };
   }
 }
 
 export class Checkout {
-  private scannedItems: Products = {}
+  private scannedItems: ScannedProducts = {}
 
   constructor(
-    private products: Products, 
+    private products: ProductPrices, 
     private specialOffers: SpecialOffers = {}
   ) {}
 
